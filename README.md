@@ -1,4 +1,4 @@
-# Coffeekraken Remote Stack <img src=".resources/coffeekraken-logo.jpg" height="25px" />
+# Coffeekraken Template Stack <img src=".resources/coffeekraken-logo.jpg" height="25px" />
 
 <p>
 	<!--<a href="https://travis-ci.org/coffeekraken/template-stack">
