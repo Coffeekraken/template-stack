@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 190);
+/******/ 	return __webpack_require__(__webpack_require__.s = 189);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -13781,7 +13781,7 @@ return Vue$3;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(202).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(201).setImmediate))
 
 /***/ }),
 /* 55 */
@@ -13830,15 +13830,15 @@ var _vue = __webpack_require__(54);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _pagesSwitcher = __webpack_require__(191);
+var _pagesSwitcher = __webpack_require__(190);
 
 var _pagesSwitcher2 = _interopRequireDefault(_pagesSwitcher);
 
-var _keyboardShortcut = __webpack_require__(196);
+var _keyboardShortcut = __webpack_require__(195);
 
 var _keyboardShortcut2 = _interopRequireDefault(_keyboardShortcut);
 
-var _style = __webpack_require__(199);
+var _style = __webpack_require__(198);
 
 var _style2 = _interopRequireDefault(_style);
 
@@ -13916,7 +13916,7 @@ exports.default = TemplateStack;
 "use strict";
 
 
-var _class = __webpack_require__(192);
+var _class = __webpack_require__(191);
 
 var _class2 = _interopRequireDefault(_class);
 
@@ -20863,37 +20863,6 @@ function upperFirst(string) {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = uniqid;
-var uniqidIdx = 0;
-if (!window.sugar) window.sugar = {};
-if (!window.sugar._uniqid) window.sugar._uniqid = 0;
-
-/**
- * Get a uniq id
- */
-function uniqid() {
-	// update uniqid idx
-	window.sugar._uniqid++;
-	return "s" + window.sugar._uniqid.toString();
-	// uniqidIdx++;
-
-	// let ts=String(new Date().getTime()), i = 0, out = '';
-	// for(i=0;i<ts.length;i+=2) {
-	// 	out+=Number(ts.substr(i, 2)).toString(36);
-	// }
-	// return ('s' + out + (uniqidIdx * Math.round(Math.random()*9999999)));
-}
-
-/***/ }),
-/* 190 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
@@ -20915,7 +20884,7 @@ window.TemplateStack = _main2.default; // import some dependencies like polyfill
 exports.default = _main2.default;
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20956,14 +20925,14 @@ exports.default = _vue2.default.component('template-stack-page-switcher', {
 });
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _SSelectComponent = __webpack_require__(193);
+var _SSelectComponent = __webpack_require__(192);
 
 var _SSelectComponent2 = _interopRequireDefault(_SSelectComponent);
 
@@ -20972,7 +20941,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _SSelectComponent2.default;
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 Object.defineProperty(exports, "__esModule", {
@@ -21002,10 +20971,6 @@ var _offsetParent2 = _interopRequireDefault(_offsetParent);
 var _scrollTop = __webpack_require__(176);
 
 var _scrollTop2 = _interopRequireDefault(_scrollTop);
-
-var _uniqid = __webpack_require__(189);
-
-var _uniqid2 = _interopRequireDefault(_uniqid);
 
 var _insertAfter = __webpack_require__(169);
 
@@ -21038,8 +21003,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import __querySelectorLive from 'coffeekraken-sugar/js/dom/querySelectorLive'
-
 
 __webpack_require__(187);
 
@@ -21165,6 +21128,9 @@ var SSelectComponent = function (_native) {
 				},
 				onKeyUp: function onKeyUp(e) {
 					_this3._onKeyUp(e);
+				},
+				onMouseMove: function onMouseMove(e) {
+					_this3._onMouseMove(e);
 				}
 			};
 			this.addEventListener('open', function (e) {
@@ -21172,12 +21138,14 @@ var SSelectComponent = function (_native) {
 				document.addEventListener('click', _this3._handlers.onDocumentClick);
 				window.addEventListener('scroll', _this3._handlers.onScrollResize);
 				window.addEventListener('resize', _this3._handlers.onScrollResize);
+				document.addEventListener('mousemove', _this3._handlers.onMouseMove);
 			});
 			this.addEventListener('close', function (e) {
 				document.removeEventListener('keydown', _this3._handlers.onKeyDown);
 				document.removeEventListener('click', _this3._handlers.onDocumentClick);
 				window.removeEventListener('scroll', _this3._handlers.onScrollResize);
 				window.removeEventListener('resize', _this3._handlers.onScrollResize);
+				document.removeEventListener('mousemove', _this3._handlers.onMouseMove);
 			});
 
 			// listen for keyup
@@ -21256,6 +21224,7 @@ var SSelectComponent = function (_native) {
 			document.removeEventListener('click', this._handlers.onDocumentClick);
 			window.removeEventListener('scroll', this._handlers.onScrollResize);
 			window.removeEventListener('resize', this._handlers.onScrollResize);
+			document.removeEventListener('mousemove', this._handlers.onMouseMove);
 			this._destroy();
 		}
 
@@ -21272,6 +21241,17 @@ var SSelectComponent = function (_native) {
 		}
 
 		/**
+   * On mouse move on document
+   */
+
+	}, {
+		key: '_onMouseMove',
+		value: function _onMouseMove(e) {
+			// let the mouse events flows inside the optionsContainerElm
+			this.optionsContainerElm.style.pointerEvents = 'all';
+		}
+
+		/**
    * Process to internal search
    */
 
@@ -21279,6 +21259,9 @@ var SSelectComponent = function (_native) {
 		key: '_internalSearch',
 		value: function _internalSearch() {
 			var _this4 = this;
+
+			// reset the scroll position of the options
+			this.optionsContainerElm.scrollTop = 0;
 
 			// loop on each options
 			[].forEach.call(this.optionsContainerElm.querySelectorAll(this.componentSelector('option')), function (option) {
@@ -21364,6 +21347,11 @@ var SSelectComponent = function (_native) {
 	}, {
 		key: '_onKeyDown',
 		value: function _onKeyDown(e) {
+
+			// prevent the mouse interactions to avoid conflict between mouse and keyboard
+			this.optionsContainerElm.style.pointerEvents = 'none';
+
+			// check which key has been pressed
 			switch (e.keyCode) {
 				case 40:
 					// down
@@ -21423,6 +21411,13 @@ var SSelectComponent = function (_native) {
 	}, {
 		key: '_activateNext',
 		value: function _activateNext() {
+
+			// if no option already selected by keyboard, activate the first.
+			// this will make the second item to be selected as expected
+			if (!this._currentActiveOption) {
+				this._activateFirst();
+			}
+
 			// remove active class if exist
 			if (this._currentActiveOption) {
 				this.removeComponentClass(this._currentActiveOption, 'option', null, 'active');
@@ -21445,10 +21440,13 @@ var SSelectComponent = function (_native) {
 				this.addComponentClass(this._currentActiveOption, 'option', null, 'active');
 				this._currentActiveOption.classList.add('active');
 				// scroll view
-				var currentScroll = this._currentActiveOption.parentNode.scrollTop;
 				var optionHeight = this._currentActiveOption.offsetHeight;
-				if (currentScroll + optionHeight <= this._currentActiveOption.parentNode.scrollHeight) {
+				var optionOffest = (0, _offsetParent2.default)(this._currentActiveOption);
+				// if need to scroll the view
+				if (optionOffest.top > this.optionsContainerElm.offsetHeight - optionHeight) {
 					this._currentActiveOption.parentNode.scrollTop += optionHeight;
+				} else if (optionOffest.top < 0) {
+					this.optionsContainerElm.scrollTop = optionOffest.top;
 				}
 			}
 		}
@@ -21460,6 +21458,10 @@ var SSelectComponent = function (_native) {
 	}, {
 		key: '_activatePrevious',
 		value: function _activatePrevious() {
+
+			// do not allow to activate a previous item if their's no active one already
+			if (!this._currentActiveOption) return;
+
 			// remove active class if exist
 			if (this._currentActiveOption) {
 				this.removeComponentClass(this._currentActiveOption, 'option', null, 'active');
@@ -21481,10 +21483,13 @@ var SSelectComponent = function (_native) {
 				this.addComponentClass(this._currentActiveOption, 'option', null, 'active');
 				this._currentActiveOption.classList.add('active');
 				// scroll to item
-				var currentScroll = this._currentActiveOption.parentNode.scrollTop;
 				var optionHeight = this._currentActiveOption.offsetHeight;
-				if (currentScroll - optionHeight >= 0) {
+				var optionOffest = (0, _offsetParent2.default)(this._currentActiveOption);
+				if (optionOffest.top < 0) {
 					this._currentActiveOption.parentNode.scrollTop -= optionHeight;
+				} else if (optionOffest.top > this.optionsContainerElm.offsetHeight) {
+					var ot = optionOffest.top + this.optionsContainerElm.scrollTop;
+					this.optionsContainerElm.scrollTop = ot - optionHeight;
 				}
 			}
 		}
@@ -21906,6 +21911,11 @@ var SSelectComponent = function (_native) {
 
 			// add the listener for the hover
 			option.addEventListener('mouseover', function (e) {
+				if (_this8._currentActiveOption) {
+					_this8.removeComponentClass(_this8._currentActiveOption, 'option', null, 'active');
+					_this8._currentActiveOption.classList.remove('active');
+				}
+
 				_this8._currentActiveOption = option;
 			});
 
@@ -22058,9 +22068,11 @@ var SSelectComponent = function (_native) {
 			this.removeComponentClass(this._containerElm, null, null, 'opened');
 
 			// unactivate the option if one exist
-			if (this._currentActiveOption) {
-				this.removeComponentClass(this._currentActiveOption, 'option', null, 'active');
-			}
+			// if (this._currentActiveOption) {
+			// 	this.removeComponentClass(this._currentActiveOption, 'option', null, 'active');
+			// 	this._currentActiveOption.classList.remove('active');
+			// 	this._currentActiveOption = null;
+			// }
 			// remove the dropup class
 			this._clearDropupTimeout = setTimeout(function () {
 				_this10.removeComponentClass(_this10._containerElm, null, 'dropup');
@@ -22226,12 +22238,11 @@ var SSelectComponent = function (_native) {
 
 exports.default = SSelectComponent;
 
-
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(195)(undefined);
+exports = module.exports = __webpack_require__(194)(undefined);
 // imports
 
 
@@ -22242,7 +22253,7 @@ exports.push([module.i, "@charset \"UTF-8\";\n/**\n * Scope the entire css stack
 
 
 /***/ }),
-/* 195 */
+/* 194 */
 /***/ (function(module, exports) {
 
 /*
@@ -22324,14 +22335,14 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 196 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * dependencies
  */
 
-var vkeys = __webpack_require__(203);
+var vkeys = __webpack_require__(202);
 
 /**
  * Export `shortcut`
@@ -22432,7 +22443,7 @@ shortcut.press = function press(k, el) {
 
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -22622,7 +22633,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 198 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -22812,16 +22823,16 @@ process.umask = function() { return 0; };
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(197)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(196)))
 
 /***/ }),
-/* 199 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(194);
+var content = __webpack_require__(193);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -22829,7 +22840,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(200)(content, options);
+var update = __webpack_require__(199)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -22846,7 +22857,7 @@ if(false) {
 }
 
 /***/ }),
-/* 200 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -22902,7 +22913,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(201);
+var	fixUrls = __webpack_require__(200);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -23218,7 +23229,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 201 */
+/* 200 */
 /***/ (function(module, exports) {
 
 
@@ -23313,7 +23324,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 202 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -23366,13 +23377,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(198);
+__webpack_require__(197);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 203 */
+/* 202 */
 /***/ (function(module, exports) {
 
 var vkeys = exports = module.exports = {

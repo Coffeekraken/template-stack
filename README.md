@@ -42,7 +42,7 @@ This package is for now in experimental mode so use it with caution.
 ## Install
 
 ```
-npm install git@github.com:Coffeekraken/template-stack.git --save-dev
+npm install git+https://git@github.com/Coffeekraken/template-stack.git#0.0.1 --save-dev
 ```
 
 <a name="readme-get-started"></a>
